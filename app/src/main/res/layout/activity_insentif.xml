@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InsentifActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gambar1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/In_img_1"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/In_txt_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/In_img_1"
+        android:layout_marginTop="-90dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="INSENTIF PER KATEGORI"
+        android:textSize="24sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/Kat_txt_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/In_txt_1"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/poppinsregular"
+        android:text="AKI"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/Kat_txt_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_1"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppinsregular"
+        android:text="AEROSOL"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/Kat_txt_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_2"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppinsregular"
+        android:text="BRAKE SHOE"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/Kat_txt_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_3"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppinsregular"
+        android:text="SHOCK ABSORBER"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/Kat_txt_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_4"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppinsregular"
+        android:text="WIPER BLADE"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/Kat_txt_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/In_txt_1"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="69dp"
+        android:layout_toRightOf="@id/Kat_txt_1"
+        android:width="180dp"
+        android:height="35dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Kat_txt_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_1"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/Kat_txt_1"
+        android:width="180dp"
+        android:height="35dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Kat_txt_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_2"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/Kat_txt_2"
+        android:width="180dp"
+        android:height="35dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Kat_txt_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_3"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@id/Kat_txt_3"
+        android:width="180dp"
+        android:height="35dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Kat_txt_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Kat_txt_4"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/Kat_txt_4"
+        android:width="180dp"
+        android:height="35dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+</RelativeLayout>

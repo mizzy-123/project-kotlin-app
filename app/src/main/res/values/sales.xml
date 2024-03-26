@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Sales">
+        <item>Dony</item>
+        <item>Aris</item>
+        <item>Krisnedi</item>
+        <item>Loly</item>
+        <item>Indrawan</item>
+    </string-array>
+
+</resources>

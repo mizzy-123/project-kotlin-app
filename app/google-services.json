@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "6107401565",
+    "project_id": "crud-22b03",
+    "storage_bucket": "crud-22b03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6107401565:android:feb5fbdb78a21c0c12ecb4",
+        "android_client_info": {
+          "package_name": "com.example.crud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9fhnZ1NpzSkspyzd39SNIQ4fMqhAWaxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

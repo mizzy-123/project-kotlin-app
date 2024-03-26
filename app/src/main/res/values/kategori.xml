@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Kategori">
+        <item>Aki</item>
+        <item>Aerosol</item>
+        <item>Brakeshoe</item>
+        <item>Shock Absorber</item>
+        <item>Wiper Blade</item>
+
+    </string-array>
+</resources>
