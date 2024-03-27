@@ -5,30 +5,43 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.crud.databinding.RecyclerItemBinding
+import com.example.crud.helper.data.DataItem
 
-class DataAdapter(private val dataList: List<DataModel>) : RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
+class DataAdapter(private val dataList: ArrayList<DataItem>) : RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    internal fun setOnClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: DataItem)
+    }
+
+    inner class DataViewHolder(var binding: RecyclerItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item, parent, false)
-        return DataViewHolder(itemView)
+        val binding = RecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return DataViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int {
+        return dataList.size
     }
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        val currentData = dataList[position]
-        holder.bind(currentData)
-    }
+        val dataOrder = dataList[position]
+        holder.binding.also {
+            it.recnamatoko.text = dataOrder.namatoko
+            it.recbarang.text = dataOrder.namabarang
+            it.rectanggal.text = dataOrder.tanggal
 
-    override fun getItemCount() = dataList.size
+        }
 
-    inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tanggalTextView: TextView = itemView.findViewById(R.id.rectanggal)
-        private val namatokoTextView: TextView = itemView.findViewById(R.id.recnamatoko)
-        private val namabrgTextView: TextView = itemView.findViewById(R.id.recbarang)
-
-        fun bind(data: DataModel) {
-            tanggalTextView.text = data.tanggal
-            namatokoTextView.text = data.namatoko
-            namabrgTextView.text = data.namabrg
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(dataOrder)
         }
     }
 }
