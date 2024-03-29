@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.crud.databinding.ActivityRegisterBinding
+import com.example.crud.factory.AccountModelFactory
+import com.example.crud.helper.AccountPreferences
+import com.example.crud.helper.dataStoreAccount
+import com.example.crud.model.AccountViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var binding: ActivityRegisterBinding
+    private lateinit var accountViewModel: AccountViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,10 +25,13 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
-        val user = auth.currentUser
+
+        val pref = AccountPreferences.getInstance(application.dataStoreAccount)
+        accountViewModel = ViewModelProvider(this, AccountModelFactory(pref)).get(AccountViewModel::class.java)
+
 
         binding.RBtn1.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            register()
         }
 
         binding.RImg1.setOnClickListener {
@@ -39,6 +48,8 @@ class RegisterActivity : AppCompatActivity() {
         val password = binding.edtKatasandi.text.toString()
         val confirmPassword = binding.edtKonfrm.text.toString()
 
+        binding.RBtn1.text = "Loading..."
+        binding.RBtn1.isEnabled = false
         if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             binding.edtEmail.error = "Email tidak boleh kosong"
             binding.edtKatasandi.error = "Kata sandi tidak boleh kosong"
@@ -67,12 +78,26 @@ class RegisterActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) {
                     if (it.isSuccessful) {
-                        auth.currentUser?.delete()
-                        Toast.makeText(this, "Email tidak valid", Toast.LENGTH_SHORT).show()
+                        val user = it.result?.user
+                        val uid = user?.uid
+
+                        if (uid !== null){
+                            accountViewModel.saveAccount(email, uid)
+                            val intent = Intent(this@RegisterActivity, MenuActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        }
+
+                        Toast.makeText(this, "Registrasi berhasil", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this, it.exception?.message, Toast.LENGTH_SHORT).show()
-
+                        binding.RBtn1.text = "REGISTER"
+                        binding.RBtn1.isEnabled = true
                     }
+                }
+                .addOnFailureListener {
+                    binding.RBtn1.text = "REGISTER"
+                    binding.RBtn1.isEnabled = true
                 }
 
         }

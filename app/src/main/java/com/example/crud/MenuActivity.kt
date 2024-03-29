@@ -62,7 +62,10 @@ class MenuActivity : AppCompatActivity() {
             .setPositiveButton("Yes"){ dialog: DialogInterface, _:Int ->
                 FirebaseAuth.getInstance().signOut()
                 accountViewModel.deleteAccount()
-                finishAffinity()
+//                finishAffinity()
+                val intent = Intent(this@MenuActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
                 dialog.dismiss()
             }
             .setNegativeButton("No"){dialog: DialogInterface, _:Int ->

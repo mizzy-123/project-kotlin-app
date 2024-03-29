@@ -4,13 +4,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crud.databinding.RecyclerItemBinding
+import com.example.crud.helper.DataOrderDiffCallback
 import com.example.crud.helper.data.DataItem
 
 class DataAdapter(private val dataList: ArrayList<DataItem>) : RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
+
+
+    fun setListDataSearch(listDataSearch: ArrayList<DataItem>){
+        val diffCallback = DataOrderDiffCallback(this.dataList, listDataSearch)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        this.dataList.clear()
+        this.dataList.addAll(listDataSearch)
+        diffResult.dispatchUpdatesTo(this)
+    }
 
     internal fun setOnClickCallback(onItemClickCallback: OnItemClickCallback){
         this.onItemClickCallback = onItemClickCallback
